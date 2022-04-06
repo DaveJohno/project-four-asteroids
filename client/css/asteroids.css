@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+body {
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#container {
+  position: relative;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+#my-canvas {
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: black;
+  border: 1px solid #fff;
+}
+
+.pause-menu,
+.scoreboard,
+.controls,
+.options-menu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  border-radius: 5px;
+  border: #fff dashed 5px;
+  width: 95%;
+  height: 95%;
+  max-width: 500px;
+  max-height: 500px;
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+}
+
+.pause-menu {
+  z-index: 1;
+}
+
+.scoreboard {
+  z-index: 2;
+}
+
+.options-menu {
+  z-index: 3;
+}
+.controls {
+  z-index: 4;
+}
+
+.pause-menu ul,
+.scoreboard ul,
+.controls ul,
+.options-menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  color: white;
+}
+
+.pause-menu li,
+.scoreboard li,
+.controls li,
+.options-menu li {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+#menuScore:first-child,
+.options-list .heading {
+  text-align: center;
+  color: chartreuse;
+  border-bottom: 5px dashed white;
+  align-self: center;
+  padding-bottom: 10px;
+}
+
+.pause-menu button,
+.scoreboard button,
+.controls button,
+.options-menu button {
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+  border: none;
+  border-radius: none;
+  font-size: 2rem;
+  background-color: transparent;
+  color: white;
+  width: 100%;
+  padding: 10px;
+}
+
+.pause-menu button:hover,
+.scoreboard button:hover,
+.options-menu button:hover,
+.contolls button:hover {
+  background-color: white;
+  color: chartreuse;
+}
+#scorebordList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr;
+  text-align: center;
+}
+
+.scoreboard,
+.controls,
+.options-list .heading {
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex {
+  display: flex;
+}
+
+.options-list .heading button {
+  color: chartreuse;
+}
+
+.contols-key-set {
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.contols-key-set fieldset {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  color: aqua;
+  border: none;
+}
+
+.contols-key-set input {
+  padding: 0px;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.contols-key-set label {
+  margin: 0px;
+}
+
+.contols-key-set fieldset button {
+  font-size: 1.5rem;
+}
+.contols-key-set fieldset button:hover {
+  color: chartreuse;
+}
+
+.options-menu-list {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

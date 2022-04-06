@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/asteroids.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="./js/componants/asteroids/asteroids.js" defer></script>
+    <script src="./js/componants/asteroids/script.js" defer></script>
+
+    <title>asteroids</title>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <canvas id="my-canvas"></canvas>
+
+      <nav class="pause-menu" id="pauseMenu">
+        <ul>
+          <li class="menu-list" id="menuScore">
+            <button class="menu-score"></button>
+          </li>
+          <button class="reset-btn">Reset Game</button>
+          <li class="menu-list">
+            <button class="start-game">Start Game</button>
+          </li>
+          <li class="menu-list">
+            <button class="high-scores">Scoreboard</button>
+          </li>
+          <li class="menu-list"><button class="options">Options</button></li>
+          <li class="menu-list">
+            <button class="back-to-main-menus">Main Menu</button>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="scoreboard" id="scoreboardMenu">
+        <ul class="options-list">
+          <li class="heading"><button>High Scores</button></li>
+        </ul>
+        <ul class="scoreboard-list" id="scorebordList"></ul>
+        <ul class="scoreboard-back">
+          <li class="menu-list">
+            <button class="back-to-pause-menu">Back</button>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="options-menu" id="optionsMenu">
+        <ul class="options-list">
+          <li class="heading"><button>Options</button></li>
+        </ul>
+        <ul class="options-menu-list">
+          <li class="options-list">
+            <button class="controls-btn">Controlls</button>
+          </li>
+          <li class="menu-list"><button>Audio</button></li>
+          <li class="menu-list">
+            <button class="options-back-btn">Back</button>
+          </li>
+        </ul>
+      </nav>
+      <nav class="controls" id="controlsMenu">
+        <ul class="options-list">
+          <li class="heading"><button>Controls</button></li>
+        </ul>
+        <ul class="contols-key-set">
+          <fieldset>
+            <label for="forward">Forward</label>
+            <input type="text" name="forward" />
+          </fieldset>
+
+          <fieldset>
+            <label for="forward">left</label>
+            <input type="text" name="forward" />
+          </fieldset>
+
+          <fieldset>
+            <label for="forward">Right</label>
+            <input type="text" name="forward" />
+          </fieldset>
+
+          <fieldset>
+            <label for="forward">Brake</label>
+            <input type="text" name="forward" />
+          </fieldset>
+
+          <fieldset>
+            <label for="forward">Shoot</label>
+            <input type="text" name="forward" />
+          </fieldset>
+
+          <fieldset>
+            <button>Save</button>
+            <button>Default</button>
+            <li class="menu-list">
+              <button class="controls-back-btn">Back</button>
+            </li>
+          </fieldset>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
