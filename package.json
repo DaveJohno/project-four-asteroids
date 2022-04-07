@@ -4,6 +4,7 @@
     "bcrypt": "^5.0.1",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "node-sass": "^7.0.1",
     "pg": "^8.7.3"
   },
   "scripts": {

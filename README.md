@@ -4,7 +4,7 @@
 
 ## History
 
-Asteroids is a space-themed multidirectional shooter arcade game designed by Lyle Rains and Ed Logg released in November 1979 by Atari, Inc.[4] The player controls a single spaceship in an asteroid field which is periodically traversed by flying saucers. The object of the game is to shoot and destroy the asteroids and saucers, while not colliding with either, or being hit by the saucers' counter-fire. The game becomes harder as the number of asteroids increases.
+Asteroids is a space-themed multidirectional shooter arcade game designed by Lyle Rains and Ed Logg released in November 1979 by Atari, Inc. The player controls a single spaceship in an asteroid field which is periodically traversed by flying saucers. The object of the game is to shoot and destroy the asteroids and saucers, while not colliding with either, or being hit by the saucers' counter-fire. The game becomes harder as the number of asteroids increases.
 
 In my experience with hospitality, sometimes groups of working clients only have limited time for lunch breaks. they would email their orders to us with a time and date for the order to be ready for.
 
@@ -34,7 +34,11 @@ day Three
 - finish Menu interface for the game
 - polish up css
 
-## day Four
+day Four
+
+-
+-
+-
 
 ## Tech Used
 

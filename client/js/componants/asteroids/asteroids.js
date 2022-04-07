@@ -15,7 +15,30 @@ let gamePause = false;
 let gameover = false;
 let game;
 
-function roundCountdown() {}
+playerControls = {
+  default_keys: {
+    forward: { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
+    left: { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
+    right: { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
+    brake: { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
+    fire: {},
+  },
+  player_keys: {
+    forward: { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
+    left: { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
+    right: { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
+    brake: { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
+    fire: {},
+  },
+  controller: { forward: {}, left: {}, right: {}, brake: {}, fire: {} },
+
+  touch: { forward: {}, left: {}, right: {}, brake: {}, fire: {} },
+};
+
+const defaultKeys = playerControls.default_keys;
+const playerKeys = playerControls.player_keys;
+
+console.log(defaultKeys.forward.keyCode);
 
 document.addEventListener("DOMContentLoaded", SetupCanvas);
 
@@ -244,18 +267,20 @@ function CircleCollision(p1x, p1y, r1, p2x, p2y, r2) {
 }
 
 function Render() {
-  ship.movingForward = keys[38];
+  //moving the ship
+  ship.movingForward =
+    keys[defaultKeys.forward.keyCode] || keys[playerKeys.forward.keyCode];
 
   // breaking ship
-  if (keys[90]) {
+  if (keys[defaultKeys.brake.keyCode] || keys[playerKeys.brake.keyCode]) {
     ship.velX *= 0.96;
     ship.velY *= 0.96;
   }
 
   // rotating ship
-  if (keys[39]) {
+  if (keys[defaultKeys.right.keyCode] || keys[playerKeys.right.keyCode]) {
     ship.Rotate(1);
-  } else if (keys[37]) {
+  } else if (keys[defaultKeys.left.keyCode] || keys[playerKeys.left.keyCode]) {
     ship.Rotate(-1);
   }
 

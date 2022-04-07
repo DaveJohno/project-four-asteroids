@@ -10,6 +10,13 @@ const backBtn = document.querySelector(".back-to-pause-menu");
 const optionsMenu = document.querySelector(".options-menu");
 const controlsMenu = document.querySelector("#controlsMenu");
 
+//key binding inputs
+const forwardKey = document.querySelector(".foward-key");
+const leftKey = document.querySelector(".left-key");
+const rightKey = document.querySelector(".right-key");
+const brakeKey = document.querySelector(".brake-key");
+const fireKey = document.querySelector(".fire-key");
+
 let topScore = "";
 let topTenScores;
 
@@ -58,6 +65,14 @@ function togglePause() {
 }
 
 //menu controlls
+//escape key press
+window.addEventListener("keydown", (e) => {
+  var key = e.keyCode;
+  if (round !== 0) {
+    key === 27 && togglePause();
+  }
+});
+
 //continue button
 startContinueBtn.addEventListener("click", () => {
   togglePause();
@@ -90,6 +105,7 @@ document.querySelector(".options-back-btn").addEventListener("click", () => {
   optionsMenu.classList.add("hidden");
 });
 
+//constrols menu options
 //controls btn
 document.querySelector(".controls-btn").addEventListener("click", () => {
   controlsMenu.classList.remove("hidden");
@@ -100,10 +116,20 @@ document.querySelector(".controls-back-btn").addEventListener("click", () => {
   controlsMenu.classList.add("hidden");
 });
 
-//escape key press
-window.addEventListener("keydown", (e) => {
-  var key = e.keyCode;
-  if (round !== 0) {
-    key === 27 && togglePause();
-  }
+// key bindings
+forwardKey.addEventListener("keyup", (key) => {
+  console.log(key);
+  forwardKey.value = key.code;
+});
+leftKey.addEventListener("keyup", (key) => {
+  console.log(key.key);
+});
+rightKey.addEventListener("keyup", (key) => {
+  console.log(key);
+});
+brakeKey.addEventListener("keyup", (key) => {
+  console.log(key);
+});
+fireKey.addEventListener("keyup", (key) => {
+  console.log(key);
 });
