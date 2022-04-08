@@ -1,15 +1,114 @@
-.link-heading {
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.site-container {
+  width: 100vw;
+  // height: 100vh;
+  // max-height: 800px;
+  max-width: 800px;
+  background-color: rgb(40, 44, 52);
+  border: 5px solid teal;
+  padding: 50px;
+  box-shadow: 0px 0px 5px 2px rgb(0, 80, 80);
+  nav {
+    h1 {
+      padding: 10px;
+    }
+
+    .Nav-list {
+      display: flex;
+      width: 100%;
+      max-width: 960px;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 3px solid teal;
+      margin-bottom: 20px;
+      margin-top: 20px;
+
+      li {
+        list-style: none;
+
+        div {
+          margin: 5px;
+          display: flex;
+        }
+      }
+    }
+  }
+
+  p {
+    // border: 3px solid teal;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(27, 30, 36);
+    box-shadow: 0px 0px 10px 0px rgb(27, 30, 36);
+  }
+}
+
+#root > div > header > section > nav > ul > li > div > div > button,
+.Asteroids-button {
+  text-transform: uppercase;
+  font-size: 1rem;
+  height: 30px;
+  padding: 5px 10px;
+  font-weight: 600;
+  box-shadow: 0px 0px 5px 2px rgb(0, 80, 80);
+  background-color: teal;
+  color: aliceblue;
+  border-radius: 0px;
   text-decoration: none;
-  font-size: large;
-  color: aqua;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   cursor: pointer;
 }
 
-.link-heading:hover {
-  color: rgb(0, 133, 133);
+#root > div > header > section > nav > ul > li > div > div > button:hover,
+.Asteroids-button:hover {
+  background-color: rgb(0, 90, 90);
+  box-shadow: 0px 0px 10px 0px rgb(0, 80, 80);
+  color: rgb(153, 161, 167);
 }
 
-.top-scores {
+.top-ten-scores-section {
+  height: 100%;
   width: 100%;
-  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  .top-ten-scores {
+    height: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    list-style: none;
+    display: grid;
+    text-align: center;
+    grid-template-columns: minmax(50px, 1fr) minmax(200px, 2fr) minmax(
+        200px,
+        2fr
+      );
+
+    :first-child,
+    :nth-child(2),
+    :nth-child(3) {
+      background-color: rgb(32, 32, 32);
+      padding: 10px;
+      color: white;
+    }
+
+    li {
+      border-bottom: solid 2px;
+      padding: 10px;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
 }

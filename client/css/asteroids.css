@@ -106,7 +106,8 @@ body {
 .pause-menu button,
 .scoreboard button,
 .controls button,
-.options-menu button {
+.options-menu button,
+.contols-key-set fieldset button:hover {
   font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
   border: none;
   border-radius: none;
@@ -120,7 +121,8 @@ body {
 .pause-menu button:hover,
 .scoreboard button:hover,
 .options-menu button:hover,
-.contolls button:hover {
+.contolls button:hover,
+.contols-key-set fieldset button:hover {
   background-color: white;
   color: chartreuse;
 }
@@ -167,7 +169,7 @@ body {
 .contols-key-set input {
   padding: 0px;
   margin: 0px;
-  width: 40px;
+  width: 60px;
   height: 40px;
   text-align: center;
 }
@@ -176,13 +178,14 @@ body {
   margin: 0px;
 }
 
-.contols-key-set fieldset button {
-  font-size: 1.5rem;
-}
-.contols-key-set fieldset button:hover {
-  color: chartreuse;
+.contols-key-set fieldset:last-child {
+  margin: 0;
+  padding: 0;
 }
 
+.contols-key-set fieldset button {
+  margin-bottom: 10px;
+}
 .options-menu-list {
   height: 90%;
   display: flex;

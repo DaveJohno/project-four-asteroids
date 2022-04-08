@@ -33,7 +33,7 @@ function renderTopScoresList() {
     .map(
       (score, index) => `
       <li class="menu-list "> ${index + 1} </li>
-      <li class="menu-list"> ${score.player_name} </li> <li class="menu-list">${
+      <li class="menu-list"> ${score.user_name} </li> <li class="menu-list">${
         score.score
       } </li>
     `
@@ -114,22 +114,65 @@ document.querySelector(".controls-btn").addEventListener("click", () => {
 //controls back button
 document.querySelector(".controls-back-btn").addEventListener("click", () => {
   controlsMenu.classList.add("hidden");
+  console.log(playerKeys);
 });
 
 // key bindings
 forwardKey.addEventListener("keyup", (key) => {
-  console.log(key);
-  forwardKey.value = key.code;
+  console.log(key.key, key.code, key.keyCode);
+  console.log(playerKeys.forward);
+
+  playerKeys.forward.key = key.key;
+  playerKeys.forward.code = key.code;
+  playerKeys.forward.keyCode = key.keyCode;
 });
 leftKey.addEventListener("keyup", (key) => {
   console.log(key.key);
+  leftKey.value = key.key;
+
+  playerKeys.left.key = key.key;
+  playerKeys.left.code = key.code;
+  playerKeys.left.keyCode = key.keyCode;
 });
 rightKey.addEventListener("keyup", (key) => {
   console.log(key);
+  rightKey.value = key.key;
+
+  playerKeys.right.key = key.key;
+  playerKeys.right.code = key.code;
+  playerKeys.right.keyCode = key.keyCode;
 });
 brakeKey.addEventListener("keyup", (key) => {
   console.log(key);
+  brakeKey.value = key.key;
+
+  playerKeys.brake.key = key.key;
+  playerKeys.brake.code = key.code;
+  playerKeys.brake.keyCode = key.keyCode;
 });
 fireKey.addEventListener("keyup", (key) => {
   console.log(key);
+  console.log();
+  fireKey.value = key.key;
+
+  playerKeys.fire.key = key.key;
+  playerKeys.fire.code = key.code;
+  playerKeys.fire.keyCode = key.keyCode;
 });
+
+// controlls save button
+// document.querySelector(".save-controls-btn").addEventListener("click", () => {
+//   console.log(forwardKey.value);
+// });
+
+// //controls default button
+// document
+//   .querySelector(".default-controls-btn")
+//   .addEventListener("click", () => {
+//     console.log(defaultKeys);
+//     forwardKey.value = defaultKeys.forward.key;
+//     leftKey.value = defaultKeys.left.key;
+//     rightKey.value = defaultKeys.right.key;
+//     brakeKey.value = defaultKeys.brake.key;
+//     fireKey.value = defaultKeys.fire.key;
+//   });

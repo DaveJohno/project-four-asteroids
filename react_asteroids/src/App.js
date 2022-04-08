@@ -4,36 +4,51 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.scss";
 import TopTenScores from "./components/scores/TopTenScores";
+import SignUpModal from "./components/user/SignUPModal";
+import SignInModal from "./components/user/SignInModal";
+import TopTenModal from "./components/scores/TopTenModel";
 
 function App() {
-  function componentDidMount() {
-    axios.get("").then((res) => console.log(res));
-  }
-  componentDidMount();
+  const [SignUpOpen, setSignUpOpen] = React.useState(false);
+  const handleSignUPOpen = () => setSignUpOpen(true);
+  const handleSignUPClose = () => setSignUpOpen(false);
+
+  const [SignInOpen, setSignInOpen] = React.useState(false);
+  const handleSignInOpen = () => setSignInOpen(true);
+  const handleSignInClose = () => setSignInOpen(false);
 
   return (
     <div className="App">
       <header className="App-header">
-        <section className="">
-          <h1>Welcome</h1>
+        <section className="site-container">
+          <nav>
+            <h1>Welcome To The Wonderful World Of Asteroids</h1>
+            <ul className="Nav-list">
+              <li>
+                <div>
+                  <TopTenModal />
+                </div>
+              </li>
+
+              <li>
+                <div>
+                  <SignUpModal />
+                  <SignInModal />
+                </div>
+              </li>
+            </ul>
+          </nav>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            aliquam ab quae voluptatibus, omnis eveniet. Veritatis, quibusdam.
-            Dignissimos, necessitatibus commodi. Consectetur voluptatum itaque
-            inventore voluptate magnam labore nulla sequi pariatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
+            quas eveniet, culpa, voluptates necessitatibus, expedita ullam dolor
+            nesciunt totam rem nobis eum pariatur quis dignissimos velit
+            asperiores. Architecto, recusandae dolore.
           </p>
-          <section className="top-scores">
-            <TopTenScores />
-          </section>
-          <Link className="link-heading" to="/signin">
-            Sign In
-          </Link>
-          <br />
-          <Link className="link-heading" to="/signin">
-            Sign up
-          </Link>
-          <br />
-          <a href="/asteroids"> Asteroids</a>
+
+          <a href="./asteroids" className="Asteroids-button">
+            {" "}
+            Asteroids
+          </a>
         </section>
         <Routes>
           <Route path="./signin" />

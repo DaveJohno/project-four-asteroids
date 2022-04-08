@@ -14,6 +14,7 @@ let asteroidCount = 1;
 let gamePause = false;
 let gameover = false;
 let game;
+let gameOverCount = 0;
 
 playerControls = {
   default_keys: {
@@ -21,14 +22,14 @@ playerControls = {
     left: { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
     right: { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
     brake: { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
-    fire: {},
+    fire: { key: " ", code: "Space", keyCode: 32 },
   },
   player_keys: {
     forward: { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
     left: { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
     right: { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
     brake: { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
-    fire: {},
+    fire: { key: " ", code: "Space", keyCode: 32 },
   },
   controller: { forward: {}, left: {}, right: {}, brake: {}, fire: {} },
 
@@ -37,8 +38,6 @@ playerControls = {
 
 const defaultKeys = playerControls.default_keys;
 const playerKeys = playerControls.player_keys;
-
-console.log(defaultKeys.forward.keyCode);
 
 document.addEventListener("DOMContentLoaded", SetupCanvas);
 
@@ -93,13 +92,18 @@ function SetupCanvas() {
 
   document.body.addEventListener("keydown", (e) => {
     keys[e.keyCode] = true;
-    if (e.keyCode === 32) {
+    if (
+      e.keyCode === defaultKeys.fire.keyCode ||
+      e.keyCode === playerKeys.fire.keyCode
+    ) {
       bullets.push(new Bullet(ship.angle));
     }
   });
 
   togglePause();
   levelSet();
+
+  gameOverCount = 0;
 
   document.body.addEventListener("keyup", (e) => (keys[e.keyCode] = false));
 
@@ -301,10 +305,16 @@ function Render() {
 
   if (lives <= 0) {
     gameover = true;
-    //post request here
   }
 
-  gameover === true && gameOver();
+  if (gameover === true) {
+    gameOver();
+    console.log(gameOverCount);
+    if (gameOverCount === 0) {
+      gameOverCount += 1;
+      //post request here
+    }
+  }
 
   if (asteroids.length !== 0) {
     for (let k = 0; k < asteroids.length; k++) {
@@ -374,7 +384,7 @@ function Render() {
   } else if (!ship.visible) {
     ship.x = canvasWidth + 10;
     ship.y = canvasHeight + 10;
-    gameOver();
+    // gameOver();
   }
 
   if (bullets.length !== 0) {
