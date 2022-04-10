@@ -25,19 +25,56 @@ let topTenScores;
 
 async function getTopScores() {
   const res = await axios.get("/asteroids/scores", {});
+  console.log(res.data);
   topTenScores = res.data;
   topScore = res.data[0].score;
 }
 
 // axios request for user by id
 async function getUserById() {
+  console.log("getting here line 34");
   const res = await axios.get("/sessions/", {});
   data = res.data;
-  console.log(data);
+  console.log(
+    "this is the data:",
+    data,
+    "this is the round number",
+    round,
+    "this is the score:, ",
+    score
+  );
   return data;
 }
 
 getTopScores();
+
+// post updated high scores
+
+function postHighScore() {
+  console.log(data);
+  console.log(
+    "this is the data a 2nd time :",
+    data,
+    "this is the round number a 2nd time",
+    round,
+    "this is the score a 2nd time:, ",
+    score
+  );
+  axios
+    .post("/asteroids/scores", {
+      score: score,
+      round: round,
+      email: data.email,
+      userId: data.userId,
+      userName: data.userName,
+      firstName: data.firstName,
+      lastName: data.lastName,
+    })
+    .then((res) => res.data)
+    .then(() => {
+      console.log(`12345`);
+    });
+}
 
 function renderTopScoresList() {
   document.querySelector(".scoreboard-list ").innerHTML = topTenScores

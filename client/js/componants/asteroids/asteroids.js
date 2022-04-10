@@ -1,7 +1,7 @@
 let canvas;
 let ctx;
-let canvasWidth = window.innerWidth - 2;
-let canvasHeight = window.innerHeight - 2;
+let canvasWidth = window.innerWidth - 4;
+let canvasHeight = window.innerHeight - 4;
 let ship;
 let keys = [];
 let bullets = [];
@@ -81,10 +81,10 @@ function gameOver() {
 
 function SetupCanvas() {
   getUserById().then(() => {
-    console.log(data);
+    // console.log(data);
     if (!!data.loggedIn) {
       notloggedInScreen.style.display = "none";
-      console.log("logged in", "this data is:", data);
+      // console.log("logged in", "this data is:", data);
       canvas = document.querySelector("#my-canvas");
       ctx = canvas.getContext("2d");
       canvas.width = canvasWidth;
@@ -125,10 +125,10 @@ class Ship {
     this.x = canvasWidth / 2;
     this.y = canvasHeight / 2;
     this.movingForward = false;
-    this.speed = 0.1;
+    this.speed = 0.03;
     this.velX = 0;
     this.velY = 0;
-    this.rotateSpeed = 0.002;
+    this.rotateSpeed = 0.001;
     this.radius = 15;
     this.angle = 0;
     this.strokeColor = "white";
@@ -196,7 +196,7 @@ class Bullet {
     this.angle = angle;
     this.height = 2;
     this.width = 6;
-    this.speed = 6;
+    this.speed = 3.5;
     this.velX = 0;
     this.velY = 0;
   }
@@ -321,7 +321,16 @@ function Render() {
     console.log(gameOverCount);
     if (gameOverCount === 0) {
       gameOverCount += 1;
-      //post request here
+
+      console.log(gameOverCount);
+      console.log(lives);
+      console.log("data: ", data);
+      if (gameOverCount === 1 && lives === 0) {
+        console.log("time to post");
+        //post request here
+        console.log("data 2: ", data);
+        postHighScore();
+      }
     }
   }
 

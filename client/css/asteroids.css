@@ -195,7 +195,7 @@ body {
 .not-logged-in {
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,4 +203,5 @@ body {
   text-align: center;
   position: absolute;
   z-index: 5;
+  color: white;
 }

@@ -24,4 +24,19 @@ router.get("/", (req, res) => {
 router.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "about.html"));
 });
+
+router.post("/scores", (req, res) => {
+  console.log(req.body, res.body);
+
+  console.log(req.body);
+  user_id = req.body.userId;
+  user_name = req.body.userName;
+  round_number = req.body.round;
+  score = req.body.score;
+
+  Astroids.addScore(user_id, user_name, round_number, score).then((scores) =>
+    res.json(scores)
+  );
+});
+
 module.exports = router;
