@@ -11,6 +11,12 @@ router.get("/scores", (req, res) => {
   Astroids.findAllTopScores().then((scores) => res.json(scores));
 });
 
+router.get("/userScores", (req, res) => {
+  userId = req.session.userId;
+  console.log("this is the id: ", userId);
+  Astroids.findUserTopScores(userId).then((scores) => res.json(scores));
+});
+
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "index.html"));
 });

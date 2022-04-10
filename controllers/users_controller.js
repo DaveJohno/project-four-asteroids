@@ -4,6 +4,21 @@ const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
+router.get("/"),
+  (req, res) => {
+    console.log(req.session.userId);
+    console.log(req, res);
+    User.finduserByUserId(userId).then((user) =>
+      console.log("the user is: ", user)
+    );
+  };
+
+//log user out
+router.delete("/", (req, res) => {
+  req.session.userId = undefined;
+  res.json({ message: "you have logged out" });
+});
+
 router.post("/", (req, res) => {
   const passwordDigest = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);

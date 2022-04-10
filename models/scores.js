@@ -11,11 +11,20 @@ const Astroids = {
     return db.query(sql).then((dbRes) => dbRes.rows);
   },
 
-  findUserTopScores: (userID) => {
+  // delect this when i pass userid in when logged in sesion
+  findUserTopScores: (userId) => {
+    console.log("this is the models UserID", userId);
     const sql =
       "SELECT * From high_scores WHERE user_id = $1 ORDER BY score DESC LIMIT 10";
-    return db.query(sql, [userID]).then((dbRes) => dbRes.rows);
+    return db.query(sql, [userId]).then((dbRes) => dbRes.rows);
   },
+
+  // use this when i get userId to pass though
+  // findUserTopScores: (userID) => {
+  //   const sql =
+  //     "SELECT * From high_scores WHERE user_id = $1 ORDER BY score DESC LIMIT 10";
+  //   return db.query(sql, [userID]).then((dbRes) => dbRes.rows);
+  // },
 
   AddScore: (user_id, player_name, round_number, score) => {
     const sql = `INSERT INTO high_scores( user_id , player_name , round_number , score) VALUES ($1,$2,$3,$4)

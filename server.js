@@ -13,6 +13,8 @@ const sessions = require("./middlewares/sessions");
 const asteroidsController = require("./controllers/asteroids_controller");
 const reactController = require("./controllers/reactController");
 const usersController = require("./controllers/users_controller");
+const sessionsController = require("./controllers/sessions_controller");
+
 app.listen(port, () => console.log(`listening on port ${port}`));
 
 app.use(logger);
@@ -21,6 +23,7 @@ app.use(sessions);
 
 app.use(express.static(path.join(__dirname, "./react_asteroids/build")));
 app.use("/users", usersController);
+app.use("/sessions", sessionsController);
 app.use("/", reactController);
 
 app.use(express.static("client"));

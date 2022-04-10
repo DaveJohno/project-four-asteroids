@@ -80,34 +80,43 @@ function gameOver() {
 }
 
 function SetupCanvas() {
-  canvas = document.querySelector("#my-canvas");
-  ctx = canvas.getContext("2d");
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  getUserById().then(() => {
+    console.log(data);
+    if (!!data.loggedIn) {
+      notloggedInScreen.style.display = "none";
+      console.log("logged in", "this data is:", data);
+      canvas = document.querySelector("#my-canvas");
+      ctx = canvas.getContext("2d");
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ship = new Ship();
-  ship.Rotate(Math.floor(Math.random() * 359));
+      ship = new Ship();
+      ship.Rotate(Math.floor(Math.random() * 359));
 
-  document.body.addEventListener("keydown", (e) => {
-    keys[e.keyCode] = true;
-    if (
-      e.keyCode === defaultKeys.fire.keyCode ||
-      e.keyCode === playerKeys.fire.keyCode
-    ) {
-      bullets.push(new Bullet(ship.angle));
+      document.body.addEventListener("keydown", (e) => {
+        keys[e.keyCode] = true;
+        if (
+          e.keyCode === defaultKeys.fire.keyCode ||
+          e.keyCode === playerKeys.fire.keyCode
+        ) {
+          bullets.push(new Bullet(ship.angle));
+        }
+      });
+
+      togglePause();
+      levelSet();
+
+      gameOverCount = 0;
+
+      document.body.addEventListener("keyup", (e) => (keys[e.keyCode] = false));
+
+      Render();
+    } else {
+      console.log(`not logged in`);
     }
   });
-
-  togglePause();
-  levelSet();
-
-  gameOverCount = 0;
-
-  document.body.addEventListener("keyup", (e) => (keys[e.keyCode] = false));
-
-  Render();
 }
 
 class Ship {

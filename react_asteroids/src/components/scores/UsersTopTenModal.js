@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import TopTenScores from "./TopTenScores";
+import UsersTopTenScores from "./UsersTopTenScores";
 
 const style = {
   position: "absolute",
@@ -17,14 +17,14 @@ const style = {
   p: 4,
 };
 
-export default function TopTenModal({ loggedInUser }) {
+export default function UsersTopTenModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Top 10 Scores</Button>
+      <Button onClick={handleOpen}>Your Scores</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -32,7 +32,7 @@ export default function TopTenModal({ loggedInUser }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <TopTenScores loggedInUser={loggedInUser} />
+          <UsersTopTenScores />
         </Box>
       </Modal>
     </div>

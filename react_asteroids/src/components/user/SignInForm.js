@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SignUpModal from "./SignUPModal";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -37,10 +38,25 @@ export default function SignIn({ handleSignInClose }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    const password = data.get("password");
+    const userName = data.get("userName");
+
+    let state = {};
+    axios
+      .post("/sessions", { password: password, userName: userName })
+      .then((res) => {
+        // console.log(res);
+        return res.data;
+      })
+      // .then((data) => {
+      //   console.log(data);
+      //   // return (state.userName = data.userName);
+      // })
+      .catch((error) => {
+        let errorDOM = document.querySelector(".log-in .error");
+        errorDOM.textContent = error.response.data.message;
+      });
   };
 
   return (
@@ -71,10 +87,10 @@ export default function SignIn({ handleSignInClose }) {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="userName"
+              label="User Name"
+              name="userName"
+              autoComplete="userName"
               autoFocus
             />
             <TextField

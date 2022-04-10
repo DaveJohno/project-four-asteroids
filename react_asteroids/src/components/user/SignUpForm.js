@@ -39,25 +39,12 @@ export default function SignUp({ handleSignUPClose }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // ({
-    //   userName: data.get("userName"),
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
+
     const email = data.get("email");
     const password = data.get("password");
     const userName = data.get("userName");
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
-
-    // console.log(
-    //   email,
-    //   "this is email",
-    //   password,
-    //   userName,
-    //   firstName,
-    //   lastName
-    // );
 
     axios
       .post("/users", {

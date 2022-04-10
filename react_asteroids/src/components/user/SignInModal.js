@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-export default function SignInModal() {
+export default function SignInModal({ setUserLoggedIn }) {
   const [SignInOpen, setSignInOpen] = React.useState(false);
   const handleSignInOpen = () => setSignInOpen(true);
   const handleSignInClose = () => setSignInOpen(false);
@@ -34,7 +34,10 @@ export default function SignInModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <SignIn handleSignInClose={handleSignInClose} />
+          <SignIn
+            handleSignInClose={handleSignInClose}
+            UserLoggedIn={setUserLoggedIn}
+          />
         </Box>
       </Modal>
     </div>

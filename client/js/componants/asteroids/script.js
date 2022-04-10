@@ -9,6 +9,9 @@ const highScoresBtn = document.querySelector(".high-scores");
 const backBtn = document.querySelector(".back-to-pause-menu");
 const optionsMenu = document.querySelector(".options-menu");
 const controlsMenu = document.querySelector("#controlsMenu");
+const notloggedInScreen = document.querySelector(".not-logged-in");
+
+notloggedInScreen.style.display = "flex";
 
 //key binding inputs
 const forwardKey = document.querySelector(".foward-key");
@@ -16,7 +19,7 @@ const leftKey = document.querySelector(".left-key");
 const rightKey = document.querySelector(".right-key");
 const brakeKey = document.querySelector(".brake-key");
 const fireKey = document.querySelector(".fire-key");
-
+let data;
 let topScore = "";
 let topTenScores;
 
@@ -24,6 +27,14 @@ async function getTopScores() {
   const res = await axios.get("/asteroids/scores", {});
   topTenScores = res.data;
   topScore = res.data[0].score;
+}
+
+// axios request for user by id
+async function getUserById() {
+  const res = await axios.get("/sessions/", {});
+  data = res.data;
+  console.log(data);
+  return data;
 }
 
 getTopScores();

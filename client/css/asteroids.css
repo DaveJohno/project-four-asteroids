@@ -192,3 +192,15 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
+.not-logged-in {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  z-index: 5;
+}

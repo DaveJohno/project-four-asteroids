@@ -1,12 +1,12 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.scss";
-import TopTenScores from "./components/scores/TopTenScores";
 import SignUpModal from "./components/user/SignUPModal";
 import SignInModal from "./components/user/SignInModal";
 import TopTenModal from "./components/scores/TopTenModel";
+import UsersTopTenModal from "./components/scores/UsersTopTenModal";
 
 function App() {
   const [SignUpOpen, setSignUpOpen] = React.useState(false);
@@ -16,6 +16,38 @@ function App() {
   const [SignInOpen, setSignInOpen] = React.useState(false);
   const handleSignInOpen = () => setSignInOpen(true);
   const handleSignInClose = () => setSignInOpen(false);
+
+  const [userLoggedIn, setUserLoggedIn] = React.useState(false);
+
+  function handleUserSignIn(data) {
+    if (!!data.loggedIn) {
+      setUserLoggedIn(true);
+    }
+  }
+
+  const handleUserSignOut = () => {
+    axios
+      .delete("/users")
+      .then((req, res) => {
+        console.log(res);
+      })
+      .then((res) => console.log(res))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    axios
+      .get("/sessions")
+      .then((res) => {
+        return res.data;
+      })
+      .then((data) => {
+        console.log(data);
+        handleUserSignIn(data);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -27,28 +59,46 @@ function App() {
               <li>
                 <div>
                   <TopTenModal />
+
+                  {userLoggedIn && <UsersTopTenModal />}
                 </div>
               </li>
 
               <li>
                 <div>
-                  <SignUpModal />
-                  <SignInModal />
+                  {!userLoggedIn && <SignUpModal />}
+                  {!userLoggedIn && <SignInModal />}
+
+                  {/* azios request for the user by id */}
+                  {userLoggedIn && (
+                    <div
+                      className="Asteroids-button"
+                      onClick={handleUserSignOut}
+                    >
+                      Sign Out
+                    </div>
+                  )}
                 </div>
               </li>
             </ul>
           </nav>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
-            quas eveniet, culpa, voluptates necessitatibus, expedita ullam dolor
-            nesciunt totam rem nobis eum pariatur quis dignissimos velit
-            asperiores. Architecto, recusandae dolore.
+            Asteroids is a space-themed multidirectional shooter arcade game
+            designed by Lyle Rains and Ed Logg released in November 1979 by
+            Atari, Inc.[4] The player controls a single spaceship in an asteroid
+            field which is periodically traversed by flying saucers. The object
+            of the game is to shoot and destroy the asteroids and saucers, while
+            not colliding with either, or being hit by the saucers'
+            counter-fire. The game becomes harder as the number of asteroids
+            increases.
           </p>
 
-          <a href="./asteroids" className="Asteroids-button">
-            {" "}
-            Asteroids
-          </a>
+          <div className="Asteroids">
+            <a href="./asteroids" className="Asteroids-button">
+              {" "}
+              Asteroids
+            </a>
+          </div>
         </section>
         <Routes>
           <Route path="./signin" />
