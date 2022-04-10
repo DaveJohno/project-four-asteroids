@@ -19,6 +19,10 @@ this version is my interperation of the classic game ready to play on the browse
 
 https://davejohno-asteroids.herokuapp.com/
 
+## GitHub
+
+https://github.com/DaveJohno/project-four-asteroids
+
 ## MY Plan
 
 day one
