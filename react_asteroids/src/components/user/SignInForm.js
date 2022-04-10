@@ -45,17 +45,13 @@ export default function SignIn({ handleSignInClose }) {
     axios
       .post("/sessions", { password: password, userName: userName })
       .then((res) => {
-        // console.log(res);
         return res.data;
       })
-      // .then((data) => {
-      //   console.log(data);
-      //   // return (state.userName = data.userName);
-      // })
       .catch((error) => {
         let errorDOM = document.querySelector(".log-in .error");
         errorDOM.textContent = error.response.data.message;
-      });
+      })
+      .then(() => window.location.reload(false));
   };
 
   return (

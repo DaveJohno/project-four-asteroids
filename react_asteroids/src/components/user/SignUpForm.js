@@ -54,7 +54,8 @@ export default function SignUp({ handleSignUPClose }) {
         firstName: firstName,
         lastName: lastName,
       })
-      .then((res) => res.data);
+      .then((res) => res.data)
+      .then(() => window.location.reload(false));
   };
 
   return (

@@ -34,7 +34,8 @@ function App() {
       .then((res) => console.log(res))
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .then(() => window.location.reload(false));
   };
 
   useEffect(() => {
@@ -82,6 +83,14 @@ function App() {
               </li>
             </ul>
           </nav>
+          {userLoggedIn && (
+            <div className="Asteroids">
+              <a href="./asteroids" className="Asteroids-button">
+                Play Asteroids
+              </a>
+            </div>
+          )}
+          <br />
           <p>
             Asteroids is a space-themed multidirectional shooter arcade game
             designed by Lyle Rains and Ed Logg released in November 1979 by
@@ -92,13 +101,6 @@ function App() {
             counter-fire. The game becomes harder as the number of asteroids
             increases.
           </p>
-
-          <div className="Asteroids">
-            <a href="./asteroids" className="Asteroids-button">
-              {" "}
-              Asteroids
-            </a>
-          </div>
         </section>
         <Routes>
           <Route path="./signin" />
