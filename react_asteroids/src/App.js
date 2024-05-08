@@ -7,6 +7,7 @@ import SignUpModal from "./components/user/SignUPModal";
 import SignInModal from "./components/user/SignInModal";
 import TopTenModal from "./components/scores/TopTenModel";
 import UsersTopTenModal from "./components/scores/UsersTopTenModal";
+import "dotenv/config";
 
 function App() {
   const [SignUpOpen, setSignUpOpen] = React.useState(false);
